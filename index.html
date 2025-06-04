@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Borekart - Coming Soon</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f9fafb;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: #007bff;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.75rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      font-weight: 600;
+    }
+
+    main {
+      flex-grow: 1;
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .feature {
+      background: white;
+      border-radius: 12px;
+      padding: 1.8rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+      text-align: center;
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #007bff;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #ddd;
+    }
+
+    .tab {
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      color: #666;
+      border-bottom: 3px solid transparent;
+    }
+
+    .tab.active {
+      color: #007bff;
+      border-color: #007bff;
+    }
+
+    form {
+      background: white;
+      max-width: 480px;
+      margin: 0 auto 3rem auto;
+      padding: 1.8rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      border: 1.5px solid #ccc;
+      border-radius: 6px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      width: 100%;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      padding: 1.5rem 1rem;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><img src="logo.png" alt="Borekart Logo" style="height:80px;"/></h1>
+    <p>Apne Gully Ki Dukan Ab Online – Coming Soon!</p>
+  </header>
+
+  <main>
+    <section class="features">
+      <div class="feature">
+        <div class="feature-icon">🏪</div>
+        <h3>Support Local Vendors</h3>
+        <p>Empower neighborhood shops by helping them go online.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🛍️</div>
+        <h3>Shop Products & Services</h3>
+        <p>From kirana to repair services — all in one app.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <h3>Quick Delivery</h3>
+        <p>Instant delivery within your locality.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🚀</div>
+        <h3>Get Early Access</h3>
+        <p>Be the first to experience Borekart by pre-registering now.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="tabs">
+        <div class="tab active" id="tab-vendor">Vendor Registration</div>
+        <div class="tab" id="tab-user">User Registration</div>
+      </div>
+
+      <form id="form-vendor">
+        <label for="vendor-name">Full Name</label>
+        <input type="text" id="vendor-name" name="name" required placeholder="Your name" />
+
+        <label for="vendor-email">Email</label>
+        <input type="email" id="vendor-email" name="email" required placeholder="you@example.com" />
+
+        <label for="vendor-phone">Phone</label>
+        <input type="tel" id="vendor-phone" name="phone" required placeholder="10-digit number" pattern="[0-9]{10}" />
+
+        <label for="vendor-address">Address</label>
+        <input type="text" id="vendor-address" name="address" placeholder="Your shop or home address" />
+
+        <label for="vendor-feedback">Suggestions or Comments</label>
+        <textarea id="vendor-feedback" name="message" placeholder="Any suggestions..."></textarea>
+
+        <button type="submit">Register as Vendor</button>
+      </form>
+
+      <form id="form-user" hidden>
+        <label for="user-name">Full Name</label>
+        <input type="text" id="user-name" name="name" required placeholder="Your name" />
+
+        <label for="user-email">Email</label>
+        <input type="email" id="user-email" name="email" required placeholder="you@example.com" />
+
+        <label for="user-phone">Phone</label>
+        <input type="tel" id="user-phone" name="phone" required placeholder="10-digit number" pattern="[0-9]{10}" />
+
+        <label for="user-address">Address</label>
+        <input type="text" id="user-address" name="address" placeholder="Your home address" />
+
+        <label for="user-feedback">Suggestions or Expectations</label>
+        <textarea id="user-feedback" name="message" placeholder="What would you love to see?"></textarea>
+
+        <button type="submit">Pre-Register as User</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Borekart. All rights reserved.
+  </footer>
+
+ <script>
+  const vendorTab = document.getElementById("tab-vendor");
+  const userTab = document.getElementById("tab-user");
+  const vendorForm = document.getElementById("form-vendor");
+  const userForm = document.getElementById("form-user");
+
+  vendorTab.onclick = () => {
+    vendorTab.classList.add("active");
+    userTab.classList.remove("active");
+    vendorForm.hidden = false;
+    userForm.hidden = true;
+  };
+
+  userTab.onclick = () => {
+    userTab.classList.add("active");
+    vendorTab.classList.remove("active");
+    vendorForm.hidden = true;
+    userForm.hidden = false;
+  };
+
+  function isDuplicate(email, phone) {
+    const emails = JSON.parse(localStorage.getItem("borekartEmails") || "[]");
+    const phones = JSON.parse(localStorage.getItem("borekartPhones") || "[]");
+    return emails.includes(email) || phones.includes(phone);
+  }
+
+  function saveToLocal(email, phone) {
+    const emails = JSON.parse(localStorage.getItem("borekartEmails") || "[]");
+    const phones = JSON.parse(localStorage.getItem("borekartPhones") || "[]");
+    if (!emails.includes(email)) emails.push(email);
+    if (!phones.includes(phone)) phones.push(phone);
+    localStorage.setItem("borekartEmails", JSON.stringify(emails));
+    localStorage.setItem("borekartPhones", JSON.stringify(phones));
+  }
+
+  function handleSubmit(form) {
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const name = encodeURIComponent(formData.get("name") || "");
+      const email = formData.get("email")?.toLowerCase();
+      const phone = formData.get("phone");
+
+      if (isDuplicate(email, phone)) {
+        alert("You’ve already registered with this email or phone.");
+        return;
+      }
+
+      fetch("https://formspree.io/f/mzzgzrqw", {
+        method: "POST",
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      })
+      .then(res => {
+        if (res.ok) {
+          saveToLocal(email, phone);
+          window.location.href = `thanks.html?name=${name}`;
+        } else {
+          alert("Submission failed. Try again.");
+        }
+      });
+    });
+  }
+
+  handleSubmit(vendorForm);
+  handleSubmit(userForm);
+</script>
+</body>
+</html>
