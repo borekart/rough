@@ -1,284 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Borekart - Coming Soon</title>
+  <title>Borekart - Registration & Thank You</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
     body {
-      margin: 0; padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f9fafb;
-      color: #222;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    header {
-      background: #007bff;
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    header h1 {
       margin: 0;
-      font-size: 2.75rem;
-    }
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      font-weight: 600;
-    }
-
-    main {
-      flex-grow: 1;
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .feature {
-      background: white;
-      border-radius: 12px;
-      padding: 1.8rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      color: #222;
       text-align: center;
+      padding: 1rem;
     }
 
-    .feature-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #007bff;
+    .dark-theme {
+      background: #121212;
+      color: #fff;
     }
 
-    .tabs {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      border-bottom: 2px solid #ddd;
-    }
-
-    .tab {
-      padding: 0.75rem 1.5rem;
-      cursor: pointer;
-      font-weight: 600;
-      color: #666;
-      border-bottom: 3px solid transparent;
-    }
-
-    .tab.active {
-      color: #007bff;
-      border-color: #007bff;
+    h1 {
+      font-size: 2rem;
+      margin-top: 1rem;
     }
 
     form {
+      max-width: 500px;
+      margin: 2rem auto;
       background: white;
-      max-width: 480px;
-      margin: 0 auto 3rem auto;
-      padding: 1.8rem 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     label {
-      font-weight: 600;
-      margin-bottom: 0.3rem;
       display: block;
+      text-align: left;
+      font-weight: bold;
+      margin: 1rem 0 0.25rem;
     }
 
     input, textarea {
       width: 100%;
-      padding: 0.65rem 0.85rem;
-      margin-bottom: 1.2rem;
+      padding: 0.75rem;
       font-size: 1rem;
-      border: 1.5px solid #ccc;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
       border-radius: 6px;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 80px;
     }
 
     button {
       background: #007bff;
       color: white;
       border: none;
-      padding: 0.75rem;
-      width: 100%;
-      font-size: 1.1rem;
+      padding: 0.8rem 1.5rem;
       border-radius: 6px;
+      font-size: 1rem;
       cursor: pointer;
-      font-weight: 600;
     }
 
-    button:hover {
-      background: #0056b3;
+    .thank-you {
+      display: none;
+      padding: 2rem 1rem;
     }
 
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #777;
-      padding: 1.5rem 1rem;
-      border-top: 1px solid #ddd;
+    .thank-you.show {
+      display: block;
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .blimp {
+      font-size: 2rem;
+      font-weight: bold;
+      animation: blimp 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes blimp {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.08); }
+    }
+
+    .social {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social a {
+      text-decoration: none;
+      background: #007bff;
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1><img src="logo.png" alt="Borekart Logo" style="height:80px;"/></h1>
-    <p>Apne Gully Ki Dukan Ab Online – Coming Soon!</p>
-  </header>
+  <h1>Borekart Registration</h1>
 
-  <main>
-    <section class="features">
-      <div class="feature">
-        <div class="feature-icon">🏪</div>
-        <h3>Support Local Vendors</h3>
-        <p>Empower neighborhood shops by helping them go online.</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">🛍️</div>
-        <h3>Shop Products & Services</h3>
-        <p>From kirana to repair services — all in one app.</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">⚡</div>
-        <h3>Quick Delivery</h3>
-        <p>Instant delivery within your locality.</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">🚀</div>
-        <h3>Get Early Access</h3>
-        <p>Be the first to experience Borekart by pre-registering now.</p>
-      </div>
-    </section>
+  <form id="registrationForm">
+    <label>Full Name</label>
+    <input type="text" name="name" required />
 
-    <section>
-      <div class="tabs">
-        <div class="tab active" id="tab-vendor">Vendor Registration</div>
-        <div class="tab" id="tab-user">User Registration</div>
-      </div>
+    <label>Email</label>
+    <input type="email" name="email" required />
 
-      <form id="form-vendor">
-        <label for="vendor-name">Full Name</label>
-        <input type="text" id="vendor-name" name="name" required placeholder="Your name" />
+    <label>Phone</label>
+    <input type="tel" name="phone" required pattern="[0-9]{10}" />
 
-        <label for="vendor-email">Email</label>
-        <input type="email" id="vendor-email" name="email" required placeholder="you@example.com" />
+    <label>Address</label>
+    <input type="text" name="address" required />
 
-        <label for="vendor-phone">Phone</label>
-        <input type="tel" id="vendor-phone" name="phone" required placeholder="10-digit number" pattern="[0-9]{10}" />
+    <label>Suggestions / Comments</label>
+    <textarea name="message" placeholder="Your thoughts..."></textarea>
 
-        <label for="vendor-address">Address</label>
-        <input type="text" id="vendor-address" name="address" placeholder="Your shop or home address" />
+    <button type="submit">Register</button>
+  </form>
 
-        <label for="vendor-feedback">Suggestions or Comments</label>
-        <textarea id="vendor-feedback" name="message" placeholder="Any suggestions..."></textarea>
+  <div class="thank-you" id="thankYouSection">
+    <canvas id="confetti"></canvas>
+    <div class="blimp">धन्यवाद! | Thank You! | धन्यवाद!</div>
+    <p>Borekart मध्ये सहभागी झाल्याबद्दल धन्यवाद!<br>
+    Borekart में शामिल होने के लिए धन्यवाद!<br>
+    Thank you for registering with Borekart. We will notify you soon!</p>
 
-        <button type="submit">Register as Vendor</button>
-      </form>
+    <audio id="voice" autoplay>
+      <source src="voice-hindi.mp3" type="audio/mpeg" />
+    </audio>
 
-      <form id="form-user" hidden>
-        <label for="user-name">Full Name</label>
-        <input type="text" id="user-name" name="name" required placeholder="Your name" />
+    <div class="social">
+      <a href="https://wa.me/?text=Check%20out%20Borekart:%20https://borekart.in" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://twitter.com/intent/tweet?text=Check%20out%20Borekart!%20https://borekart.in" target="_blank"><i class="fab fa-twitter"></i> X</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://borekart.in" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    </div>
+  </div>
 
-        <label for="user-email">Email</label>
-        <input type="email" id="user-email" name="email" required placeholder="you@example.com" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    const form = document.getElementById("registrationForm");
+    const thankYou = document.getElementById("thankYouSection");
 
-        <label for="user-phone">Phone</label>
-        <input type="tel" id="user-phone" name="phone" required placeholder="10-digit number" pattern="[0-9]{10}" />
-
-        <label for="user-address">Address</label>
-        <input type="text" id="user-address" name="address" placeholder="Your home address" />
-
-        <label for="user-feedback">Suggestions or Expectations</label>
-        <textarea id="user-feedback" name="message" placeholder="What would you love to see?"></textarea>
-
-        <button type="submit">Pre-Register as User</button>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2025 Borekart. All rights reserved.
-  </footer>
-
- <script>
-  const vendorTab = document.getElementById("tab-vendor");
-  const userTab = document.getElementById("tab-user");
-  const vendorForm = document.getElementById("form-vendor");
-  const userForm = document.getElementById("form-user");
-
-  vendorTab.onclick = () => {
-    vendorTab.classList.add("active");
-    userTab.classList.remove("active");
-    vendorForm.hidden = false;
-    userForm.hidden = true;
-  };
-
-  userTab.onclick = () => {
-    userTab.classList.add("active");
-    vendorTab.classList.remove("active");
-    vendorForm.hidden = true;
-    userForm.hidden = false;
-  };
-
-  function isDuplicate(email, phone) {
-    const emails = JSON.parse(localStorage.getItem("borekartEmails") || "[]");
-    const phones = JSON.parse(localStorage.getItem("borekartPhones") || "[]");
-    return emails.includes(email) || phones.includes(phone);
-  }
-
-  function saveToLocal(email, phone) {
-    const emails = JSON.parse(localStorage.getItem("borekartEmails") || "[]");
-    const phones = JSON.parse(localStorage.getItem("borekartPhones") || "[]");
-    if (!emails.includes(email)) emails.push(email);
-    if (!phones.includes(phone)) phones.push(phone);
-    localStorage.setItem("borekartEmails", JSON.stringify(emails));
-    localStorage.setItem("borekartPhones", JSON.stringify(phones));
-  }
-
-  function handleSubmit(form) {
-    form.addEventListener("submit", e => {
+    form.addEventListener("submit", function(e) {
       e.preventDefault();
-      const formData = new FormData(form);
-      const name = encodeURIComponent(formData.get("name") || "");
-      const email = formData.get("email")?.toLowerCase();
-      const phone = formData.get("phone");
 
-      if (isDuplicate(email, phone)) {
-        alert("You’ve already registered with this email or phone.");
-        return;
-      }
+      // Simulate submission (skip Formspree or backend)
+      form.style.display = "none";
+      thankYou.classList.add("show");
 
-      fetch("https://formspree.io/f/mzzgzrqw", {
-        method: "POST",
-        headers: { 'Accept': 'application/json' },
-        body: formData
-      })
-      .then(res => {
-        if (res.ok) {
-          saveToLocal(email, phone);
-          window.location.href = `thanks.html?name=${name}`;
-        } else {
-          alert("Submission failed. Try again.");
-        }
-      });
+      const audio = document.getElementById("voice");
+      if (audio) audio.play();
+
+      const duration = 5 * 1000;
+      const end = Date.now() + duration;
+
+      (function confettiLoop() {
+        confetti({
+          particleCount: 2,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 }
+        });
+        confetti({
+          particleCount: 2,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 }
+        });
+        if (Date.now() < end) requestAnimationFrame(confettiLoop);
+      })();
     });
-  }
-
-  handleSubmit(vendorForm);
-  handleSubmit(userForm);
-</script>
+  </script>
 </body>
 </html>
